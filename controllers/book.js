@@ -10,7 +10,7 @@ const createBook = (req, res) => {
     }
     const authorExists = authors.find(author => author.id === authorId);
     if (!authorExists) {
-        return res.status(404).json({error: "Author does not exists"});
+        return res.status(404).json({ error: "Author does not exists" });
     }
     const id = uuidv4();
     const newBook = { id, authorId, bookName, ISBN };
@@ -48,7 +48,7 @@ const updateBook = (req, res) => {
     }
 
     const authorExists = authors.find(author => author.id === authorId);
-    if (authorExists && authorExists.id !== id) {
+    if (!authorExists) {
         return res.status(404).json({ error: 'Author not found' });
     }
     book.authorId = authorId;
