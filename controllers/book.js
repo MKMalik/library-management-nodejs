@@ -46,6 +46,11 @@ const updateBook = (req, res) => {
     if (bookExists && bookExists.id !== id) {
         return res.status(400).json({ error: 'ISBN must be unique' });
     }
+
+    const authorExists = authors.find(author => author.id === authorId);
+    if (authorExists && authorExists.id !== id) {
+        return res.status(404).json({ error: 'Author not found' });
+    }
     book.authorId = authorId;
     book.bookName = bookName;
     book.ISBN = ISBN;

@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
-const { authors, books } = require('../storage');
+let { authors, books } = require('../storage');
 
 // Create a new author
 const createAuthor = (req, res) => {
